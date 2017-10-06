@@ -1,6 +1,6 @@
 # PHP SheetDB Class
 
-### Instalation
+### Installation
 
 The SheetDB PHP Library is available through [Composer](https://getcomposer.org/)
 
@@ -10,7 +10,7 @@ composer require sheetdb/sheetdb-php
 
 ### Basic usage
 
-In order to instantiate SheetDB connection you need to give an api id. You can find it in [SheetDB Dashboard](https://sheetdb.io/apis).
+In order to instantiate SheetDB connection you need to give an api id. You can find it in [SheetDB Dashboard](https://sheetdb.io).
 
 ```php
 require('vendor/autoload.php');
@@ -24,9 +24,9 @@ $response = $sheetdb->name(); // returns name of a spreadsheet document
 
 ### Searching
 
-You can use search method to find only specific rows. You have 2 options. Search rows that meets all of the contitions or search rows that meets at least one of the contitions.
+You can use search method to find only specific rows. You have 2 options. Search rows that meets all of the conditions or search rows that meets at least one of the conditions.
 
-You can put second param whater you want the search to be case sensitive. By default it is not case sensitive.
+You can use second parameter if you want the search to be case sensitive. By default it is not case sensitive.
 
 ```php
 $response = $sheetdb->search(['name'=>'Steve','age'=>'22']); // returns when name="Steve" AND age=22
