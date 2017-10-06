@@ -26,7 +26,7 @@ $response = $sheetdb->name(); // returns name of a spreadsheet document
 
 You can use search method to find only specific rows. You have 2 options. Search rows that meets all of the conditions or search rows that meets at least one of the conditions.
 
-You can use second parameter if you want the search to be case sensitive. By default it is not case sensitive.
+You can use second parameter if you want the search to be case sensitive (it is boolean). By default it is not case sensitive.
 
 ```php
 $response = $sheetdb->search(['name'=>'Steve','age'=>'22']); // returns when name="Steve" AND age=22
