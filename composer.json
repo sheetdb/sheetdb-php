@@ -1,0 +1,19 @@
+{
+    "name": "sheetdb/sheetdb-php",
+    "description": "PHP Library for accessing google spreadsheet content via SheetDB. https://sheetdb.io",
+    "require": {
+        "php": ">=5.5"
+    },
+    "license": "MIT",
+    "autoload": {
+      "psr-4": {
+        "SheetDB\\": "src/"
+      }
+    },
+    "authors": [
+        {
+            "name": "SheetDB",
+            "email": "support@sheetdb.io"
+        }
+    ]
+}

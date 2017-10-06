@@ -1,0 +1,11 @@
+vendor/*
+*.orig
+.buildpath
+.project
+.settings/*
+.idea/*
+composer.lock
+test/*
+*~
+/.settings/
+/.php_cs.cache
