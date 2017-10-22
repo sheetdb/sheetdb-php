@@ -1,6 +1,7 @@
 <?php
 /**
- * It is wrapper to make SheetDB API requests
+ * This is library to simplify SheetDB API requests without any dependencies.
+ * If you want to contribute feel free to reach me at support@sheetdb.io
  */
 
 namespace SheetDB;
