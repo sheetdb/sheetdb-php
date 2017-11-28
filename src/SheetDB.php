@@ -52,7 +52,11 @@ class SheetDB
     public function name() {
       $this->connection->resetQueryParams();
       $this->connection->setUrl($this->handlerUrl('/name'));
-      return $this->connection->makeRequest('get');
+      $response = $this->connection->makeRequest('get');
+      if ($response && isset($response->name)){
+        return $response->name;
+      }
+      return false;
     }
 
     /**
@@ -62,7 +66,11 @@ class SheetDB
     public function count() {
       $this->connection->resetQueryParams();
       $this->connection->setUrl($this->handlerUrl('/count'));
-      return $this->connection->makeRequest('get')->rows;
+      $response = $this->connection->makeRequest('get');
+      if ($response && isset($response->rows)){
+        return $response->rows;
+      }
+      return false;
     }
 
     /**
@@ -97,12 +105,16 @@ class SheetDB
     /**
      * Create a row(s) in spreadsheet
      * @param array $data
-     * @return object|bool Count of rows created or false
+     * @return int|bool Count of rows created or false
      */
     public function create(array $data) {
       $this->connection->resetQueryParams();
       $this->connection->setUrl($this->handlerUrl());
-      return $this->connection->makeRequest('post', $data);
+      $response = $this->connection->makeRequest('post', $data);
+      if ($response && isset($response->created)){
+        return $response->created;
+      }
+      return false;
     }
 
     /**
@@ -111,24 +123,32 @@ class SheetDB
      * @param string $value
      * @param array $data
      * @param bool $putMethod If it's true, make PUT request, otherwise PATCH
-     * @return object|bool Count of rows updated or false
+     * @return int|bool Count of rows updated or false
      */
     public function update($columnName, $value, array $data, $putMethod = false) {
       $this->connection->resetQueryParams();
       $this->connection->setUrl($this->handlerUrl('/' . $columnName . '/' . $value));
-      return $this->connection->makeRequest($putMethod === true ? 'put' : 'patch', [$data]);
+      $response = $this->connection->makeRequest($putMethod === true ? 'put' : 'patch', [$data]);
+      if ($response && isset($response->updated)){
+        return $response->updated;
+      }
+      return false;
     }
 
     /**
      * Delete a row(s) in spreadsheet
      * @param string $columnName
      * @param string $value
-     * @return object|bool Count of rows deleted or false
+     * @return int|bool Count of rows deleted or false
      */
     public function delete($columnName, $value) {
       $this->connection->resetQueryParams();
       $this->connection->setUrl($this->handlerUrl('/' . $columnName . '/' . $value));
-      return $this->connection->makeRequest('delete');
+      $response = $this->connection->makeRequest('delete');
+      if ($response && isset($response->deleted)){
+        return $response->deleted;
+      }
+      return false;
     }
 
     /**
