@@ -56,6 +56,16 @@ class SheetDB
     }
 
     /**
+     * Get count of rows in spreadsheet (without first row)
+     * @return int Number of rows
+     */
+    public function count() {
+      $this->connection->resetQueryParams();
+      $this->connection->setUrl($this->handlerUrl('/count'));
+      return $this->connection->makeRequest('get')->rows;
+    }
+
+    /**
      * Search within spreadsheet
      * @param array $query
      * @param bool $caseSensitive
