@@ -61,7 +61,7 @@ class Connection
       $this->prepareQueryUrl();
 
       try {
-        $raw = file_get_contents($this->url, false, stream_context_create($options));
+        $raw = @file_get_contents($this->url, false, stream_context_create($options));
         $result = json_decode($raw);
       } catch (Exception $e) {
         return false;
