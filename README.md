@@ -8,6 +8,11 @@ The SheetDB PHP Library is available through [Composer](https://getcomposer.org/
 composer require sheetdb/sheetdb-php
 ```
 
+### Test spreadsheet
+
+At any time you can play with our test API here: https://sheetdb.io/api/v1/58f61be4dda40
+You can also go to Google Sheets and play with it: https://docs.google.com/spreadsheets/u/2/d/1mrsgBk4IAdSs8Ask5H1z3bWYDlPTKplDIU_FzyktrGk/edit **The spreadsheet resets every hour.**
+
 ### Basic usage
 
 In order to instantiate SheetDB connection you need to give an api id. You can find it in [SheetDB Dashboard](https://sheetdb.io).
