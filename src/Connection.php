@@ -12,9 +12,11 @@ class Connection
 
     private $url;
     private $queryParams = [];
+    private $sheet = null;
 
-    public function __construct($url) {
+    public function __construct($url, $sheet = null) {
       $this->url = $url;
+      $this->sheet = $sheet;
     }
 
     public function setUrl($url) {
@@ -75,6 +77,11 @@ class Connection
      */
     private function prepareQueryUrl() {
         $url = $this->url;
+
+        if ($this->sheet) {
+          $this->queryParams['sheet'] = $this->sheet;
+        }
+
         if ($this->queryParams) {
           $url .= '/?';
           $url .= http_build_query($this->queryParams);

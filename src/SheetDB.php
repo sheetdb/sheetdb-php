@@ -20,9 +20,9 @@ class SheetDB
      * Sets SheetDB api_id
      * @param $api_id ID of API within SheetDB
      */
-    public function __construct($api_id) {
+    public function __construct($api_id, $sheet = null) {
       $this->api_id = $api_id;
-      $this->connection = new Connection($this->handlerUrl());
+      $this->connection = new Connection($this->handlerUrl(), $sheet);
     }
 
     /**
