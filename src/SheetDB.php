@@ -136,6 +136,22 @@ class SheetDB
     }
 
     /**
+     * Update the batch of rows in the spreadsheet
+     * @param array $data
+     * @param bool $putMethod If it's true, make PUT request, otherwise PATCH
+     * @return int|bool Count of rows updated or false
+     */
+    public function batchUpdate(array $data, $putMethod = false) {
+      $this->connection->resetQueryParams();
+      $this->connection->setUrl($this->handlerUrl('/batch_update'));
+      $response = $this->connection->makeRequest($putMethod === true ? 'put' : 'patch', $data);
+      if ($response && isset($response->updated)){
+        return $response->updated;
+      }
+      return false;
+    }
+
+    /**
      * Delete a row(s) in spreadsheet
      * @param string $columnName
      * @param string $value
