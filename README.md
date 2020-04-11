@@ -64,6 +64,25 @@ $sheetdb->update('name','Chris',['age'=>'33']); // it will change only age
 $sheetdb->update('name','Chris',['age'=>'33'],true); // it will update age to 33 but all other values will be emptied, in this case a name
 ```
 
+### Update the batch of rows in the spreadsheet
+
+Update for various queries. First argument is data itself. Each object in it should have a query key with the actual query (for example, "id=5"), and the remaining keys will be updated, as in a regular PATCH / PUT request.
+
+Second parameter is optional. If it's true not specified values will be emptied.
+
+```php
+$sheetdb->batchUpdate([
+    [
+        'query' => 'id=1',
+        'age' => '33',
+    ],
+    [
+        'query' => 'id=2',
+        'age' => '52',
+    ]
+]);
+```
+
 ### Delete a row(s)
 
 Just like in update first two parameters are key and value. Every row that will match query will be deleted.
